@@ -71,3 +71,6 @@ export/
 *.pdf
 *.docx
 
+
+.public-audit/
+

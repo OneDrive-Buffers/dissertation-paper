@@ -1,91 +1,60 @@
-# Dissertation: An Interactive Ontology-Based Framework for Computer Science Education
+﻿# dissertation-paper
 
-This project uses a Python-based build driver to validate and compile the dissertation from the LaTeX sources in `src/`.
+Sanitized project snapshot imported from a local OneDrive development archive.
 
-## Commands
+## Status
 
-On Windows:
+This repository was prepared from a private buffer import and documented before publicization.
 
-```text
-build.bat
-build.bat doctor
-build.bat lint
-build.bat clean
-```
+## Overview
 
-On Linux or macOS:
+This project appears to be a software, teaching-tool, coursework, experiment, prototype, or research-support repository from an archived development workspace.
 
-```text
-./build.sh
-./build.sh doctor
-./build.sh lint
-./build.sh clean
-```
+For a fuller overview, see [docs/overview.md](docs/overview.md).
 
-You can also run the driver directly:
+## Repository structure
 
-```text
-python build.py build
-python build.py doctor
-python build.py lint
-python build.py clean
-```
+Important top-level files and folders:
 
-## What Each Command Does
+- src
+- .gitignore
+- build.bat
+- build.py
+- build.sh
+- BUILD_PIPELINE.md
+- MIGRATION.md
+- QUICKSTART.txt
+- README.md
 
-- `build`: runs doctor, runs lint, clears old build artifacts, compiles with `latexmk` when available, falls back to MiKTeX `texify` on Windows when needed, and copies `build/main.pdf` to `export/main.pdf`
-- `doctor`: checks the build environment and catches blocking document-structure problems before compilation
-- `lint`: reports dissertation-specific writing issues such as placeholders and chapters with no citation commands
-- `clean`: removes the generated build cache and exported PDF
+See [docs/structure.md](docs/structure.md).
 
-## Project Structure
+## Setup
 
-```text
-paper/
-|-- build.py
-|-- build.bat
-|-- build.sh
-|-- src/
-|   |-- include/
-|   |-- figures/
-|   |-- assets/
-|   |-- main.tex
-|   |-- bibliography.bib
-|   `-- chapters/
-|-- build/
-`-- export/
-```
+See [docs/setup.md](docs/setup.md).
 
-## Doctor Checks
+## Usage
 
-The `doctor` command verifies:
+See [docs/usage.md](docs/usage.md).
 
-- required tools are available on `PATH`
-- `src/main.tex` exists
-- `inputenc` is configured with a valid encoding token
-- LaTeX references point to existing labels
-- labels are not duplicated
-- template markers like `Your Name` and `Sample Appendix` are still visible
+## Documentation
 
-## Lint Checks
+- [docs/overview.md](docs/overview.md)
+- [docs/setup.md](docs/setup.md)
+- [docs/usage.md](docs/usage.md)
+- [docs/structure.md](docs/structure.md)
+- [docs/security-and-data.md](docs/security-and-data.md)
+- [docs/roadmap.md](docs/roadmap.md)
 
-The `lint` command reports:
+## Data and privacy
 
-- bracketed placeholder text such as `\textit{[...]}`
-- `TODO`, `TBD`, `FIXME`, and generic placeholder markers
-- chapter files with no `\cite{...}` commands
-- a literature review chapter with no citations
+This repository was imported from a sanitized local archive. It should not contain private data, student submissions, credentials, local databases, generated dependency folders, or build outputs.
 
-Lint warnings do not block the `build` command by default. If you want lint to fail when warnings exist, run:
+See [docs/security-and-data.md](docs/security-and-data.md).
 
-```text
-python build.py lint --strict
-```
+## Migration note
 
-## Notes
+If present, [MIGRATION.md](MIGRATION.md) records the original local source path and buffer-import status.
 
-- edit only the files in `src/`
-- keep `src/main.tex` as a short orchestration file and move longer configuration into `src/include/`
-- `build/` is generated output and debug cache
-- `export/main.pdf` is the final compiled PDF
-- bibliography reports in the top-level `bibliography/` folder are guidance material, not build inputs
+## License
+
+Check the repository license file if present. If no license is present, reuse is not explicitly granted until a license is added.
