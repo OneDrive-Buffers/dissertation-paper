@@ -1,0 +1,155 @@
+% Reusable dissertation assets
+\section{Platform framing}
+
+\KnowledgePlatformVision
+
+\section{Knowledge representation snippets}
+
+\subsection{RDF or Turtle concept graph example}
+
+\begin{lstlisting}[language=Turtle,caption={Illustrative Turtle snippet for the shared concept network.},label={lst:turtle-concept-network}]
+@prefix ex: <https://example.org/icg/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+
+ex:graph-algorithms a ex:Concept ;
+  skos:prefLabel "Graph algorithms" ;
+  ex:recommendedFor "middle-school-plus" ;
+  ex:hasPrerequisite ex:loops , ex:variables , ex:graphs-intro ;
+  ex:supportsService ex:knowledge-atlas , ex:algorithmica .
+
+ex:lesson-plan-graph-paths a ex:LessonPlan ;
+  dct:title "Shortest paths and traversals" ;
+  ex:selectsConcept ex:graphs-intro , ex:breadth-first-search , ex:dijkstra-intro ;
+  ex:deliveryMode ex:course-view .
+\end{lstlisting}
+
+\subsection{SPARQL lesson-plan extraction example}
+
+\begin{lstlisting}[language=SPARQL,caption={Representative SPARQL query for extracting an ordered lesson-plan subset.},label={lst:sparql-lesson-plan}]
+PREFIX ex: <https://example.org/icg/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+SELECT ?position ?concept ?label
+WHERE {
+  ex:lesson-plan-graph-paths ex:orderedItem ?item .
+  ?item ex:position ?position ;
+        ex:concept ?concept .
+  ?concept skos:prefLabel ?label .
+}
+ORDER BY ?position
+\end{lstlisting}
+
+\section{Application and service snippets}
+
+\subsection{TypeScript API example}
+
+\begin{lstlisting}[language=TypeScript,caption={Example TypeScript endpoint for retrieving a service-specific lesson plan.},label={lst:typescript-api}]
+interface LessonPlanRequest {
+  serviceId: "knowledge-atlas" | "algorithmica" | "disciplina";
+  conceptIds: string[];
+}
+
+export async function buildLessonPlan(request: LessonPlanRequest) {
+  const response = await fetch("https://api.example.org/lesson-plans", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(request),
+  });
+
+  if (!response.ok) {
+    throw new Error("Lesson-plan generation failed.");
+  }
+
+  return response.json();
+}
+\end{lstlisting}
+
+\subsection{JSON response example}
+
+\begin{lstlisting}[language=JSON,caption={Example lesson-plan payload returned by the knowledge API.},label={lst:json-lesson-plan}]
+{
+  "serviceId": "knowledge-atlas",
+  "pathTitle": "Intro to graph algorithms",
+  "orderedConcepts": [
+    { "id": "graphs-intro", "label": "Graphs and nodes" },
+    { "id": "breadth-first-search", "label": "Breadth-first search" },
+    { "id": "dijkstra-intro", "label": "Shortest-path intuition" }
+  ],
+  "deliveryMode": "course-view"
+}
+\end{lstlisting}
+
+\subsection{SQL analytics example}
+
+\begin{lstlisting}[language=SQL,caption={Example analytics table for cross-service usage reporting.},label={lst:sql-analytics}]
+CREATE TABLE service_interactions (
+  interaction_id INTEGER PRIMARY KEY,
+  service_id VARCHAR(32) NOT NULL,
+  learner_id VARCHAR(64) NOT NULL,
+  concept_id VARCHAR(64) NOT NULL,
+  interaction_type VARCHAR(32) NOT NULL,
+  completed_at TIMESTAMP NOT NULL
+);
+\end{lstlisting}
+
+\section{Comparison table template}
+
+\begin{table}[H]
+    \centering
+    \begin{threeparttable}
+        \caption{Example comparison table for client-facing services built on the shared knowledge API.}
+        \label{tab:service-comparison}
+        \begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{0.18\linewidth} Y Y Y}
+            \toprule
+            Service & Primary audience & Pedagogical emphasis & Representative outputs \\
+            \midrule
+            \LandingPageService{} & Prospective clients, schools, and partners & Communication, trust, service discovery & Service overview, case studies, onboarding information \\
+            \KnowledgeAtlas{} & Teachers, planners, and course designers & Course-oriented pathway inspection and standards alignment & Lesson plans, pathway views, curriculum maps \\
+            \AlgorithmicaApp{} & Learners in a focused topic sequence & Gamified missions and progression through algorithmic concepts & Levels, quests, mastery checkpoints, feedback loops \\
+            \DisciplinaApp{} & Learners and facilitators exploring broader concept structures & Guided progression through curated concept subsets & Sequenced challenges, progress views, concept unlocks \\
+            \bottomrule
+        \end{tabularx}
+    \end{threeparttable}
+\end{table}
+
+\section{Multi-panel UI screenshot template}
+
+\input{figures/service-ui-grid}
+
+\section{Evaluation reporting templates}
+
+\subsection{Participant profile template}
+
+\begin{table}[H]
+    \centering
+    \caption{Template for participant and reviewer reporting.}
+    \label{tab:participant-profile-template}
+    \begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{0.24\linewidth} Y Y Y}
+        \toprule
+        Group & Count & Background variables & Notes for analysis \\
+        \midrule
+        Learners & --- & Age band, prior CS exposure, familiarity with games or graph interfaces & Separate novice and experienced users where relevant \\
+        Teachers & --- & Subject area, years of teaching, curriculum responsibilities & Capture both adoption concerns and pedagogical alignment feedback \\
+        Expert reviewers & --- & Ontology, HCI, curriculum, or software engineering expertise & Use for heuristic or standards-focused review cycles \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+\subsection{Result summary template}
+
+\begin{table}[H]
+    \centering
+    \caption{Template for summarizing evaluation outcomes across services.}
+    \label{tab:result-summary-template}
+    \begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{0.22\linewidth} Y Y Y}
+        \toprule
+        Dimension & Web app evidence & Mobile app evidence & Interpretation \\
+        \midrule
+        Navigation and orientation & --- & --- & Explain where graph transparency or guidance helped or failed \\
+        Engagement and motivation & --- & --- & Contrast course-oriented behavior with gamified behavior \\
+        Learning support & --- & --- & Relate outcomes back to concept sequencing and prerequisite logic \\
+        Teacher or client confidence & --- & --- & Report whether the service portfolio looks coherent and trustworthy \\
+        \bottomrule
+    \end{tabularx}
+\end{table}

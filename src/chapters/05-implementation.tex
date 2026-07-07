@@ -1,0 +1,55 @@
+% Chapter 5: Implementation Details
+\section{Development Environment}
+
+The implementation was conducted using industry-standard tools and libraries suitable for semantic web applications.
+
+\section{Ontology Implementation}
+
+\subsection{OWL Formalization}
+
+The conceptual ontology described in Chapter~\ref{ch:ontology-design} was formalized into OWL, ensuring machine-readability and enabling automated reasoning.
+
+\subsection{RDF Instantiation}
+
+Educational domain knowledge was instantiated as RDF triples, populating the ontology with concrete CS topics, learning outcomes, and pedagogical strategies.
+
+\section{Backend Development}
+
+\subsection{Triple Store Setup}
+
+\CategoryPrompt
+  {Infrastructure and persistence strategy}
+  {Document how the canonical ontology, the operational graph, and the application delivery layer are separated in the implementation. Explain which store is authoritative for semantic consistency, which layer is optimized for runtime delivery, and how synchronization is handled between them.}
+  {RDF or triple store choice; property-graph runtime store; namespace strategy; indexing strategy; deployment topology; synchronization pipeline}
+
+\OpenQuestionPrompt
+  {Reproducible configuration}
+  {Which repositories, serialization formats, environment variables, and local setup steps are required before another developer can reproduce the knowledge API and its downstream services?}
+
+\subsection{SPARQL Query Development}
+
+\OpenQuestionPrompt
+  {Query design for the shared concept network}
+  {Which concrete questions must the graph answer for the dissertation prototype? Describe at least one query for prerequisite traversal, one for standards alignment, and one for extracting an ordered lesson plan from a subset of concepts. Representative ontology, query, and service snippets are provided in Appendix~\ref{app:reusable-assets}.}
+
+\subsection{API Implementation}
+
+RESTful endpoints were developed to support frontend requests for learning content, recommendations, and user profile management.
+
+\section{Frontend Development}
+
+\subsection{Interactive Interface Design}
+
+The learning interface was designed following user-centered design principles, with iterative refinement based on usability testing.
+
+\subsection{Visualization Components}
+
+Interactive visualizations of the ontology help students understand domain relationships and navigate the knowledge structure.
+
+\section{Testing and Quality Assurance}
+
+Comprehensive testing included unit tests for backend services, integration tests for end-to-end workflows, and usability testing with student participants.
+
+\EvidencePrompt
+  {Implementation evidence to preserve while drafting}
+  {Capture build or deployment assumptions, API contracts, representative data models, and any test evidence that explains how the knowledge API supports the course-oriented web experience, the gamified mobile experience, and the client-facing landing page.}

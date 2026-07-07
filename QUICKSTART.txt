@@ -1,0 +1,40 @@
+QUICK START
+===========
+
+Build the dissertation:
+
+WINDOWS
+  build.bat
+
+LINUX / MAC
+  ./build.sh
+
+Useful commands:
+
+  build.bat doctor
+  build.bat lint
+  build.bat clean
+
+  ./build.sh doctor
+  ./build.sh lint
+  ./build.sh clean
+
+What happens during build:
+
+1. Doctor checks the environment and blocking LaTeX issues.
+2. Lint reports dissertation-specific writing problems.
+3. Old build artifacts are removed.
+4. The driver compiles the document from src/main.tex, preferring latexmk and falling back to texify on Windows when needed.
+5. The final PDF is copied to export/main.pdf.
+
+Important directories:
+
+  src/      Edit these files.
+  build/    Generated cache and LaTeX logs.
+  export/   Final PDF output.
+
+If build fails:
+
+1. Run doctor first.
+2. Inspect build/main.log.
+3. Fix the reported LaTeX or document-structure issue.

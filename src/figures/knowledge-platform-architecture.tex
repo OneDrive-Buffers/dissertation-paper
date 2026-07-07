@@ -1,0 +1,23 @@
+\begin{tikzpicture}[
+  node distance=1.2cm and 1.4cm,
+  core/.style={draw=AccentBlue,fill=AccentBlue!10,rounded corners,minimum width=4.4cm,minimum height=1.05cm,align=center},
+  service/.style={draw=AccentTeal,fill=AccentTeal!10,rounded corners,minimum width=3.3cm,minimum height=1.0cm,align=center},
+  support/.style={draw=PromptBorder,fill=PromptBackground,rounded corners,minimum width=3.2cm,minimum height=0.95cm,align=center},
+  arrow/.style={-{Latex[length=3mm]},thick,draw=AccentBlue}
+]
+  \node[core] (api) {Knowledge API\\Canonical ontology and concept network};
+  \node[support, above left=1.1cm and 1.1cm of api] (standards) {Standards and\\competency mappings};
+  \node[support, above right=1.1cm and 1.1cm of api] (planner) {Lesson-plan assembly\\and sequencing service};
+
+  \node[service, below left=1.7cm and 0.2cm of api] (atlas) {\KnowledgeAtlas\\Course-oriented web experience};
+  \node[service, below=1.7cm of api] (mobile) {\AlgorithmicaApp\ and \DisciplinaApp\\Gamified mobile pathways};
+  \node[service, below right=1.7cm and 0.2cm of api] (landing) {\LandingPageService\\Client information and onboarding};
+
+  \draw[arrow] (standards) -- (api);
+  \draw[arrow] (planner) -- (api);
+  \draw[arrow] (api) -- (atlas);
+  \draw[arrow] (api) -- (mobile);
+  \draw[arrow] (api) -- (landing);
+  \draw[arrow] (planner) -- (atlas);
+  \draw[arrow] (planner) -- (mobile);
+\end{tikzpicture}

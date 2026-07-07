@@ -1,0 +1,60 @@
+\lstdefinelanguage{SPARQL}{
+  morekeywords={
+    PREFIX,BASE,SELECT,CONSTRUCT,ASK,DESCRIBE,WHERE,FILTER,OPTIONAL,UNION,
+    GRAPH,SERVICE,BIND,VALUES,ORDER,BY,GROUP,LIMIT,OFFSET,DISTINCT,COUNT,
+    SUM,AVG,MIN,MAX
+  },
+  sensitive=false,
+  morecomment=[l]{\#},
+  morestring=[b]"
+}
+
+\lstdefinelanguage{Turtle}{
+  morekeywords={@prefix,@base,PREFIX,BASE,a,true,false},
+  sensitive=false,
+  morecomment=[l]{\#},
+  morestring=[b]"
+}
+
+\lstdefinelanguage{TypeScript}{
+  morekeywords={
+    interface,type,implements,readonly,private,public,protected,enum,as,from,
+    unknown,never,keyof,const,let,async,await,return,export,import
+  },
+  sensitive=true,
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]",
+  morestring=[b]'
+}
+
+\lstdefinelanguage{JSON}{
+  morestring=[b]",
+  showstringspaces=false,
+  morecomment=[l]{//}
+}
+
+\lstdefinestyle{dissertationcode}{
+  backgroundcolor=\color{CodeBackground},
+  basicstyle=\ttfamily\small,
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  commentstyle=\color{CodeComment}\itshape,
+  frame=single,
+  framerule=0.6pt,
+  keywordstyle=\color{CodeKeyword}\bfseries,
+  numbersep=8pt,
+  numbers=left,
+  numberstyle=\scriptsize\color{CodeNumber},
+  rulecolor=\color{CodeFrame},
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  stringstyle=\color{CodeString},
+  tabsize=2
+}
+
+\lstset{style=dissertationcode}
+\renewcommand{\lstlistingname}{Listing}
+\renewcommand{\lstlistlistingname}{List of Listings}

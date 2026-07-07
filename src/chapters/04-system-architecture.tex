@@ -1,0 +1,59 @@
+% Chapter 4: System Architecture
+\section{Architecture Overview}
+
+The framework consists of several key components working in concert to deliver an interactive learning experience.
+
+\KnowledgePlatformVision
+
+\begin{figure}[H]
+    \centering
+    \input{figures/knowledge-platform-architecture}
+    \caption{High-level architecture for the shared knowledge API and client-facing services.}
+    \label{fig:knowledge-platform-architecture}
+\end{figure}
+
+\section{Component Architecture}
+
+\subsection{Ontology Layer}
+
+The ontology layer stores and manages the CS education ontology developed in Chapter~\ref{ch:ontology-design}. A triple store or semantic database maintains RDF representations of knowledge.
+
+\subsection{Reasoning Engine}
+
+The reasoning engine performs semantic queries and inferences over the ontology to generate personalized learning recommendations and pathways.
+
+\subsection{Learning Management Interface}
+
+The interactive interface presents learning content, tracks student progress, and collects feedback. The interface adapts based on ontology-driven reasoning. In the current project vision, \KnowledgeAtlas{} prioritizes course-oriented planning and pathway inspection, while \AlgorithmicaApp{} and \DisciplinaApp{} can emphasize more gamified progression experiences for learners.
+
+\subsection{Student Model}
+
+The student model maintains learner profiles including knowledge state, learning preferences, and performance history. This enables personalization.
+
+\section{Data Flow}
+
+\begin{enumerate}
+    \item Student interacts with the learning interface
+    \item System updates student model based on interaction
+    \item Reasoning engine queries ontology for personalized recommendations
+    \item New content or activities are presented
+\end{enumerate}
+
+\section{Technology Stack}
+
+\subsection{Backend}
+
+- RDF triple store for ontology storage (e.g., Apache Jena, AllegroGraph)
+- SPARQL engine for semantic queries
+- RESTful API for frontend communication
+
+\subsection{Frontend}
+
+- Interactive web interface using modern frameworks
+- Visualization components for ontology exploration
+- Responsive design for accessibility
+- A public-facing landing page for informing clients about the service portfolio and value proposition
+
+\section{Integration Considerations}
+
+The architecture supports integration with existing learning management systems and content repositories, ensuring compatibility with institutional infrastructure.

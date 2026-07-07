@@ -1,0 +1,76 @@
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+
+\newcommand{\FrontMatterChapter}[2]{%
+  \chapter*{#1}%
+  \phantomsection
+  \addcontentsline{toc}{chapter}{#1}%
+  \input{#2}%
+}
+
+\newcommand{\PromptBox}[3]{%
+  \par\medskip
+  \noindent
+  \fcolorbox{PromptBorder}{PromptBackground}{%
+    \begin{minipage}{0.94\linewidth}
+      \textbf{#1}\hfill\textit{#2}\par\smallskip
+      #3
+    \end{minipage}
+  }%
+  \par\medskip
+}
+
+\newcommand{\OpenQuestionPrompt}[2]{%
+  \PromptBox{Open-ended prompt}{#1}{#2}%
+}
+
+\newcommand{\CategoryPrompt}[3]{%
+  \PromptBox{Category guide}{#1}{#2\par\smallskip\textbf{Suggested categories:} #3}%
+}
+
+\newcommand{\EvidencePrompt}[2]{%
+  \PromptBox{Evidence to collect}{#1}{#2}%
+}
+
+\newcommand{\ScreenPlaceholder}[2][0.46\linewidth]{%
+  \fbox{%
+    \begin{minipage}[c][0.22\textheight][c]{#1}
+      \centering
+      \small #2
+    \end{minipage}
+  }%
+}
+
+\acrodef{API}[API]{Application Programming Interface}
+\acrodef{ICG}[ICG]{Interactive Curriculum Graph}
+\acrodef{JSONLD}[JSON-LD]{JavaScript Object Notation for Linked Data}
+\acrodef{KG}[KG]{Knowledge Graph}
+\acrodef{LMS}[LMS]{Learning Management System}
+\acrodef{OWL}[OWL]{Web Ontology Language}
+\acrodef{RDF}[RDF]{Resource Description Framework}
+\acrodef{REST}[REST]{Representational State Transfer}
+\acrodef{SPARQL}[SPARQL]{SPARQL Protocol and RDF Query Language}
+\acrodef{SQL}[SQL]{Structured Query Language}
+\acrodef{SUS}[SUS]{System Usability Scale}
+\acrodef{UI}[UI]{User Interface}
+\acrodef{UX}[UX]{User Experience}
+
+\newcommand{\PrintAcronymsChapter}{%
+  \chapter*{List of Acronyms}%
+  \phantomsection
+  \addcontentsline{toc}{chapter}{List of Acronyms}%
+  \begin{acronym}[JSON-LD]
+    \acro{API}{Application Programming Interface}
+    \acro{ICG}{Interactive Curriculum Graph}
+    \acro{JSONLD}[JSON-LD]{JavaScript Object Notation for Linked Data}
+    \acro{KG}{Knowledge Graph}
+    \acro{LMS}{Learning Management System}
+    \acro{OWL}{Web Ontology Language}
+    \acro{RDF}{Resource Description Framework}
+    \acro{REST}{Representational State Transfer}
+    \acro{SPARQL}{SPARQL Protocol and RDF Query Language}
+    \acro{SQL}{Structured Query Language}
+    \acro{SUS}{System Usability Scale}
+    \acro{UI}{User Interface}
+    \acro{UX}{User Experience}
+  \end{acronym}
+}
